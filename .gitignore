@@ -35,4 +35,5 @@ bower_components
 test
 
 #sublime projectfiles
-.sublime*
+p.sublime-project
+p.sublime-workspace
