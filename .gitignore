@@ -33,3 +33,6 @@ bower_components
 
 #test
 test
+
+#sublime projectfiles
+.sublime*
