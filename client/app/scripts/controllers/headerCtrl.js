@@ -6,15 +6,26 @@
 'use strict';
 
 angular.module('PintxApp')
-  .controller('HeaderCtrl', ['$scope',
-    function ($scope) {
-      $scope.cities = [
-        {id:1, name: 'Oviedo'},
-        {id:2, name: 'Gijón'},
-        {id:3, name: 'Avilés'},
-        {id:4, name: 'Pola de Siero'},
-        {id:5, name: 'Cangas del Narcea'},
-        {id:6, name: 'León'}
-      ];
+  .controller('HeaderCtrl', ['$scope', 'Events',
+    function ($scope, Events) {
+
+      function drawCities (res){
+        $scope.cities = res.cities;
+      }
+      function drawEvents (res){
+        $scope.days = res;
+      }
+      function errorHandler (err) {
+        $scope.cities = [
+          {id:0, name: 'No hay ciudades disponibles'}
+        ];
+        $scope.days = [
+          {id:0, name: 'No hay ciudades disponibles'}
+        ];
+      }
+      Events.getCities(drawCities, errorHandler);
+      $scope.showEvents = function(){
+        Events.getCityEvents($scope.p.city.name, drawEvents, errorHandler);
+      };
     }
   ]);
