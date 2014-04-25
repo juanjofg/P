@@ -6,10 +6,12 @@ var express     = require('express');
 var app         = express();
 var bodyParser  = require('body-parser');
 var path        = require('path');
-
+var mongoose    = require('mongoose');
 // Configure server to use bodyParser
 // to get data from POST request
 app.use(bodyParser());
+
+mongoose.connect('mongodb://localhost/events');
 
 var port = process.env.PORT || 3000;
 
@@ -24,15 +26,12 @@ if ('production' == app.get('env')){
 }
 
 // ROUTES
-var router = express.Router();
+var router = require('./router')(app);
 
-// test
-router.get('/', function(req, res){
-  //res.json({ message: 'Up and running'});
-  res.sendfile('index.html');
+// Error Handling
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
 });
 
-// Register routes
-app.use('/', router);
-
 app.listen(port);
+module.exports = app;
