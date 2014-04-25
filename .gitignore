@@ -37,3 +37,6 @@ test
 #sublime projectfiles
 p.sublime-project
 p.sublime-workspace
+
+#MongoDB
+data/
