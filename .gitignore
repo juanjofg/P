@@ -40,3 +40,6 @@ p.sublime-workspace
 
 #MongoDB
 data/
+
+client/.sass-cache
+client/.tmp
