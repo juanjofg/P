@@ -29,18 +29,26 @@ router.get('/events', function(req, res){
       res.send(err);
     }
     res.json(events);
-  })
+  });
 });
 // /p/api/events/:city
 router.get('/events/:city', function(req, res){
-  Event.find({location:req.params.city}, function(err, events){
+  Event.find({location:req.params.city}, {_id:1, name: 1}, function(err, events){
     if (err) {
       res.send(err);
     }
     res.json(events);
-  })
+  });
 });
 // /p/api/event
+router.get('/event/:id', function(req, res){
+  Event.find({_id:req.params.id}, function(err, events){
+    if (err) {
+      res.send(err);
+    }
+    res.json(events);
+  });
+});
 // /p/api/event/:local
 
 module.exports = router;
