@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('PintxApp')
-  .factory('Events', ['$http', 
+  .factory('Events', ['$http',
     function($http){
       return {
         getCities: function(success, error){
@@ -15,7 +15,13 @@ angular.module('PintxApp')
             .get('/p/api/events/' + city)
             .success(success)
             .error(error);
+        },
+        getEventLocals: function(id, success, error){
+          $http
+            .get('/p/api/event/' + id)
+            .success(success)
+            .error(error);
         }
-      }
+      };
     }
   ]);

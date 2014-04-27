@@ -1,4 +1,5 @@
 //TODO
+//DEPRECATED -> ha pasado a MainCtrl
 /*
 * Servicio que recupere las ciudades, localidades donde hay eventos
 * Servicio que recupere los eventos para cada ciudad/localidad
