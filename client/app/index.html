@@ -25,7 +25,7 @@
     <link href='http://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
 
   </head>
-  <body ng-app="PintxApp" data-spy="scroll" data-offset="0" data-target="#navbar-main">
+  <body ng-app="PintxApp" data-spy="scroll" data-offset="0" data-target="#navbar-main" ng-controller="MainCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -42,7 +42,8 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a ng-href="/" class="smoothScroll">Home</a></li>
-              <li> <a ng-href="/about" class="smoothScroll"> About</a></li>
+              <li> <a ng-href="#/about" class="smoothScroll"> About</a></li>
+              <li> <a ng-href="/locals" class="smoothScroll"> Locals</a></li>
               <!--<li> <a href="#services" class="smoothScroll"> Services</a></li>
               <li> <a href="#team" class="smoothScroll"> Team</a></li>
               <li> <a href="#portfolio" class="smoothScroll"> Portfolio</a></li>
@@ -55,7 +56,7 @@
     </div>
 
     <!-- ==== HEADERWRAP ==== -->
-    <div id="headerwrap" id="home" name="home" ng-controller="HeaderCtrl">
+    <div id="headerwrap" id="home" name="home">
       <header class="clearfix">
         <h1>P</h1>
         <p>Where the snacks are</p>
@@ -79,8 +80,8 @@
                   <h3>
                     <label for="days" class="col-lg-4 control-label">Jornadas</label>
                   </h3>
-                  <div class="col-lg-10">
-                    <select class="form-control" id="days" name="days" ng-disabled="!p.city" ng-options="day as day.name for day in days"  ng-model="p.days">
+                  <div class="col-lg-10">{{days}}
+                    <select class="form-control" id="days" name="days" ng-disabled="!p.city" ng-options="day as day.name for day in days" ng-model="p.days" ng-change="showLocals(day)">
                       <option value="">Elige tu jornada</option>
                     </select>
                   </div>
@@ -160,7 +161,7 @@
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <!--<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>-->
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
@@ -173,7 +174,8 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/headerCtrl.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/EventCtrl.js"></script>
         <script src="scripts/services/eventsSrv.js"></script>
         <!-- endbuild -->
 </body>
