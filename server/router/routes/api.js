@@ -3,7 +3,7 @@ var router = express.Router();
 var Event = require('../../models/events');
 // /p/api
 router.get('/', function(req, res){
-  res.json({ 
+  res.json({
     message: 'PintxApp API',
     version: '0.1',
     date: '25/04/2014'
