@@ -44,11 +44,6 @@
               <li><a ng-href="/" class="smoothScroll">Home</a></li>
               <li> <a ng-href="#/about" class="smoothScroll"> About</a></li>
               <li> <a ng-href="/locals" class="smoothScroll"> Locals</a></li>
-              <!--<li> <a href="#services" class="smoothScroll"> Services</a></li>
-              <li> <a href="#team" class="smoothScroll"> Team</a></li>
-              <li> <a href="#portfolio" class="smoothScroll"> Portfolio</a></li>
-              <li> <a href="#blog" class="smoothScroll"> Blog</a></li>
-              <li> <a href="#contact" class="smoothScroll"> Contact</a></li>-->
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -80,7 +75,7 @@
                   <h3>
                     <label for="days" class="col-lg-4 control-label">Jornadas</label>
                   </h3>
-                  <div class="col-lg-10">{{days}}
+                  <div class="col-lg-10">
                     <select class="form-control" id="days" name="days" ng-disabled="!p.city" ng-options="day as day.name for day in days" ng-model="p.days" ng-change="showLocals(day)">
                       <option value="">Elige tu jornada</option>
                     </select>
@@ -161,7 +156,6 @@
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-    <!--<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>-->
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
     <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
