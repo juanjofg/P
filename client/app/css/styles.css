@@ -609,6 +609,11 @@ section#blog {
 .home-post .entry-content {
   padding:15px;
 }
+.home-post .entry-content p {
+  padding-bottom: 20px;
+  min-height: 80px;
+  overflow: hidden;
+}
 .home-post .entry-content h5 a {
   font-size:22px;
 }
