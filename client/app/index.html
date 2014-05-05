@@ -76,7 +76,7 @@
                     <label for="days" class="col-lg-4 control-label">Jornadas</label>
                   </h3>
                   <div class="col-lg-10">
-                    <select class="form-control" id="days" name="days" ng-disabled="!p.city" ng-options="day as day.name for day in days" ng-model="p.days" ng-change="showLocals(day)">
+                    <select class="form-control" id="days" name="days" ng-disabled="!p.city" ng-options="day as day.name for day in days" ng-model="p.days" ng-change="showLocals()">
                       <option value="">Elige tu jornada</option>
                     </select>
                   </div>
