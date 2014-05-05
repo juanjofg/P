@@ -23,8 +23,9 @@ angular.module('PintxApp')
         Events.getCityEvents($scope.p.city.name, drawEvents, errorHandler);
       };
 
-      $scope.showLocals = function(id){
-        $location.path('/event/' + $scope.p.days._id);
+      $scope.showLocals = function(){
+        var eventName = $scope.p.days.name.replace(/ /g, '_');
+        $location.path('/event/' + eventName);
       };
     }
   ]);

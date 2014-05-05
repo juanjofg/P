@@ -4,7 +4,6 @@ angular.module('PintxApp')
   .controller('EventCtrl', ['$scope','$routeParams', 'Events',
     function($scope, $routeParams, Events){
       function drawEvents (res){
-        //$scope.locals = res[0].locals;
         var locals = [];
         for (var i = 0; i < res[0].locals.length; i++){
           if (i % 4 === 0){
@@ -17,6 +16,7 @@ angular.module('PintxApp')
       function errorHandler (err) {
         console.log(err);
       }
-      Events.getEventLocals($routeParams.id, drawEvents, errorHandler);
+      var eventName = $routeParams.id.replace(/_/g, ' ');
+      Events.getEventLocals(eventName, drawEvents, errorHandler);
     }
   ]);
