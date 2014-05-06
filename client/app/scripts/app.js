@@ -14,6 +14,10 @@ angular
         templateUrl: 'views/locals.html',
         controller: 'EventCtrl'
       })
+      .when('/event/:local', {
+        templateUrl: 'views/local.html',
+        controller: 'LocalCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
