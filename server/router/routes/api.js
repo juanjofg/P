@@ -42,7 +42,7 @@ router.get('/events/:city', function(req, res){
 });
 // /p/api/event
 router.get('/event/:id', function(req, res){
-  Event.find({_id:req.params.id}, function(err, events){
+  Event.find({name:req.params.id}, function(err, events){
     if (err) {
       res.send(err);
     }
