@@ -16,9 +16,15 @@ angular.module('PintxApp')
             .success(success)
             .error(error);
         },
-        getEventLocals: function(id, success, error){
+        getEventLocals: function(name, success, error){
           $http
-            .get('/p/api/event/' + id)
+            .get('/p/api/event/' + name)
+            .success(success)
+            .error(error);
+        },
+        getLocalData: function(name, id, success, error){
+          $http
+            .get('/p/api/event/' + name + '/' + id)
             .success(success)
             .error(error);
         }
