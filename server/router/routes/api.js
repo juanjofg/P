@@ -40,15 +40,22 @@ router.get('/events/:city', function(req, res){
     res.json(events);
   });
 });
-// /p/api/event
-router.get('/event/:id', function(req, res){
-  Event.find({name:req.params.id}, function(err, events){
+// /p/api/event/:name
+router.get('/event/:name', function(req, res){
+  Event.find({name:req.params.name}, function(err, events){
     if (err) {
       res.send(err);
     }
     res.json(events);
   });
 });
-// /p/api/event/:local
-
+// /p/api/event/:name/:local
+router.get('/event/:name/:local', function(req, res){
+  Event.find({name:req.params.name}, {locals: { $elemMatch: {id:req.params.id }}}, function(err, events){
+    if (err) {
+      res.send(err);
+    }
+    res.json(events);
+  });
+});
 module.exports = router;
