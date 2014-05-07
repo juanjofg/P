@@ -3,15 +3,15 @@
       <div class="container">
         <h2 class="centered">Locales</h2>
         <div class="row centered locals" ng-repeat="row in locals">
-          <div class="col-lg-3" ng-repeat="local in row">
+          <div class="col-lg-3" ng-repeat="local in row" ng-model="selectedLocal.info">
             <div class="home-post">
               <div class="post-image">
                 <img class="max-img" src="images/locals/default.png" alt="">
               </div>
               <div class="entry-content">
-                <h5><strong><a ng-href="#/event/{{?}}/{{local.name}}">{{local.name}}</a></strong></h5>
+                <h5><strong><a ng-href="#/event/{{eventName}}/{{local.id}}" ng-click="selectLocal(local)">{{local.name}}</a></strong></h5>
                 <p>{{local.snack}}</p>
-                <a href="#/event/{{?}}/{{local.name}}" class="more">Ver más</a>
+                <a ng-href="#/event/{{eventName}}/{{local.id}}" ng-click="selectLocal(local)" class="more">Ver más</a>
               </div>
             </div>
           </div>

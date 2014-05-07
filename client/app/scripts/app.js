@@ -10,11 +10,11 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html'
       })
-      .when('/event/:id', {
+      .when('/event/:name', {
         templateUrl: 'views/locals.html',
         controller: 'EventCtrl'
       })
-      .when('/event/:local', {
+      .when('/event/:name/:local', {
         templateUrl: 'views/local.html',
         controller: 'LocalCtrl'
       })

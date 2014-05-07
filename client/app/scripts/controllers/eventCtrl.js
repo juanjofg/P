@@ -1,8 +1,16 @@
 'use strict';
 
 angular.module('PintxApp')
-  .controller('EventCtrl', ['$scope','$routeParams', 'Events',
-    function($scope, $routeParams, Events){
+  .controller('EventCtrl', ['$scope','$routeParams', 'Events', 'StoreLocal',
+    function($scope, $routeParams, Events, StoreLocal){
+
+      $scope.selectLocal = function (local) {
+        StoreLocal.info = local;
+      };
+
+      var eventName = $routeParams.name.replace(/_/g, ' ');
+      $scope.eventName = $routeParams.name;
+
       function drawEvents (res){
         if (res.length){
           var locals = [];
@@ -18,7 +26,7 @@ angular.module('PintxApp')
       function errorHandler (err) {
         console.log(err);
       }
-      var eventName = $routeParams.id.replace(/_/g, ' ');
+
       Events.getEventLocals(eventName, drawEvents, errorHandler);
     }
   ]);
