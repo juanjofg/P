@@ -4,3 +4,60 @@
         <h2 class="centered">{{selectedLocal.name}}</h2>
       </div>
     </section>
+
+    <section class="panel no-border bg-primary lt">
+      <div class="panel-body">
+        <div class="row m-t-xl">
+          <div class="col-xs-3 text-right padder-v">
+            <a href="#" class="btn btn-primary btn-icon btn-rounded m-t-xl"><i class="i i-mail2"></i></a>
+          </div>
+          <div class="col-xs-6 text-center">
+            <div class="inline">
+              <div>
+                <div class="thumb-lg">
+                  <img src="images/map/bar_icons/bar.png" class="img-circle">
+                </div>
+              </div>
+              <div class="h4 m-t m-b-xs font-bold text-lt">{{selectedLocal.snack}}</div>
+              <small class="text-muted m-b">{{selectedLocal.snack}}</small>
+            </div>
+          </div>
+          <div class="col-xs-3 padder-v">
+            <a ng-href="tel:{{selectedLocal.phone}}" class="btn btn-primary btn-icon btn-rounded m-t-xl" data-toggle="class:btn-danger">
+              <i class="i i-phone text"></i> <i class="i i-phone2 text-active"></i>
+            </a>
+          </div>
+        </div>
+        <div class="wrapper m-t-xl m-b">
+          <div class="row m-b">
+            <div class="col-xs-6 text-right"> <small>Teléfono</small>
+              <div class="text-lt font-bold">{{selectedLocal.phone}}</div>
+            </div>
+            <div class="col-xs-6"> <small>Dirección</small>
+              <div class="text-lt font-bold">{{selectedLocal.address}}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 text-right"> <small>Cocinero</small>
+              <div class="text-lt font-bold">Jose lito</div>
+            </div>
+            <div class="col-xs-6"> <small>Gerente</small>
+              <div class="text-lt font-bold">James Richo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="panel-footer dk text-center no-border">
+        <div class="row pull-out">
+          <div class="col-xs-4">
+            <div class="padder-v"> <span class="m-b-xs h3 block text-white">245</span> <small class="text-muted">Votos</small> </div>
+          </div>
+          <div class="col-xs-4 dker">
+            <div class="padder-v"> <span class="m-b-xs h3 block text-white">55/100</span> <small class="text-muted">Valoración</small> </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="padder-v"> <span class="m-b-xs h3 block text-white">2,035</span> <small class="text-muted">Visitas</small> </div>
+          </div>
+        </div>
+      </footer>
+    </section>

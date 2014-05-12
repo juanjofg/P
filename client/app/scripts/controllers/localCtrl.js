@@ -5,10 +5,14 @@ angular.module('PintxApp')
     function($scope, $routeParams, StoreLocal, Events){
       
       var eventName = $routeParams.name.replace(/_/g, ' '),
-          localId = $routeParams.id;
+          localId = $routeParams.local;
 
       function drawData (res) {
-        $scope.selectedLocal = res[0];
+        if (res && res.locals){
+          $scope.selectedLocal = res.locals[0];
+        } else {
+          $scope.selectedLocal = res;
+        }
       }
       function errorHandler (err) {
         console.log(err);
