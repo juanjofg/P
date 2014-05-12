@@ -51,11 +51,12 @@ router.get('/event/:name', function(req, res){
 });
 // /p/api/event/:name/:local
 router.get('/event/:name/:local', function(req, res){
-  Event.find({name:req.params.name}, {locals: { $elemMatch: {id:req.params.id }}}, function(err, events){
+  var localId = parseInt(req.params.local, 10);
+  Event.find({name:req.params.name}, {"locals": {"$elemMatch":{"id":localId}}}, function(err, events){
     if (err) {
       res.send(err);
     }
-    res.json(events);
+    res.json(events[0]);
   });
 });
 module.exports = router;
