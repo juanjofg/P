@@ -23,7 +23,7 @@ var MONGO = {
 // to get data from POST request
 app.use(bodyParser());
 
-//mongoose.connect('mongodb://localhost/events', MONGO.options);
+mongoose.connect('mongodb://localhost/events', MONGO.options);
 
 var port = process.env.PORT || 3000;
 
@@ -34,7 +34,7 @@ if ('development' == app.get('env')){
   app.use(express.static(path.join(__dirname,'../client/app')));
 }
 if ('production' == app.get('env')){
-  app.use(express.static(__dirname + '/server/dist'));
+  app.use(express.static(__dirname + '/dist'));
 }
 
 // ROUTES
