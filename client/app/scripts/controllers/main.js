@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('PintxApp')
-  .controller('MainCtrl', ['$scope', 'Events', '$location', 'StoreLocal',
-    function ($scope, Events, $location, StoreLocal) {
+  .controller('MainCtrl', ['$scope', 'Events', '$location', 'StoreLocal', 'geolocationSrv',
+    function ($scope, Events, $location, StoreLocal, geolocationSrv) {
 
       $scope.selectedLocal = StoreLocal;
       
@@ -31,5 +31,17 @@ angular.module('PintxApp')
         var eventName = $scope.p.days.name.replace(/ /g, '_');
         $location.path('/event/' + eventName);
       };
+
+      function getPositionSuccess(position){
+        $scope.currentPosition = position.coords;
+        console.log(position);
+      }
+      function getPositionErr(err){
+        //TODO: ocultar mapa o centrar mapa en la ciudad seleccionada
+        //err.code y err.message
+        console.log(err);
+      }
+      //get position
+      geolocationSrv.getPosition(getPositionSuccess, getPositionErr);
     }
   ]);
