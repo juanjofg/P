@@ -713,6 +713,11 @@ section#blog {
 }
 
 @media screen and (max-width:769px) {
+  #headerwrap {
+    background: url(../images/header_bg_768.jpg) no-repeat center top;
+    min-height: 250px;
+    width: 100%;
+  }
   #headerwrap h1 {
     font-size: 80px;
   }
@@ -722,7 +727,11 @@ section#blog {
   }
 }
 @media only screen  and (min-device-width : 320px)  and (max-device-width : 480px) {
-
+  #headerwrap {
+    background: url(../images/header_bg_480.jpg) no-repeat center top;
+    min-height: 250px;
+    width: 100%;
+  }
   section.section {
     padding: 1em 0;
   }
