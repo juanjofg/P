@@ -13,6 +13,8 @@ angular.module('PintxApp')
 
       function drawEvents (res){
         if (res.length){
+          $scope.eventName = res[0].name;
+          $scope.eventInfo = res[0].info;
           $scope.originalLocals = [];//res[0].locals;
           var locals = [];
           for (var i = 0; i < res[0].locals.length; i++){
