@@ -21,15 +21,18 @@ angular.module('PintxApp')
             zoom: 15,
             center: new $window.google.maps.LatLng(lat,long)
           };
-          //scope.$apply(function(){
+
           map = new $window.google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-          //});
-          setMarkers(map, scope.originalLocals/*bares*/);
+          if (scope.originalLocals && scope.originalLocals.length > 0) {
+            setMarkers(map, scope.originalLocals/*bares*/);
+          }
         }
-        
+
         // If Google maps is already present then just initialise my map
         if (googleApi.mapsLoaded()) {
-          initGoogleMaps();
+          scope.$watch('originalLocals', function(){
+            initGoogleMaps();
+          });
         } else {
           googleApi.loadGoogleMapsAsync();
         }
