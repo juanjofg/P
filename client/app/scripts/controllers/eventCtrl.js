@@ -32,7 +32,6 @@ angular.module('PintxApp')
               'restaurant'
             ]);
           }
-          console.log($scope.originalLocals);
           $scope.locals = locals;
         }
       }
