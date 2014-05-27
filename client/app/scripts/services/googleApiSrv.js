@@ -1,3 +1,7 @@
+/******************************************************
+* Servicio que inyecta la API de Google Maps y envía  *
+* un mensaje indicando la disponibilidad del mismo    *
+******************************************************/
 'use strict';
 
 angular.module('PintxApp')
