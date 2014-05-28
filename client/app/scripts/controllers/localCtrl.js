@@ -8,10 +8,11 @@ angular.module('PintxApp')
           localId = $routeParams.local;
       $scope.originalLocals = [];
       function drawMapPoint (info) {
+        //TODO: no meter los que no tienen lat/lon
         $scope.originalLocals.push([
           info.name,
-          info.lat,
-          info.long,
+          info.loc.lat,
+          info.loc.lon,
           info.address,
           info.snack,
           0,
