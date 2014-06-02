@@ -725,6 +725,64 @@ section#blog {
     font-size: 30px;
     line-height: 38px;
   }
+  .locals {
+    padding: 0;
+  }
+  .home-post {
+    float: left;
+    margin-bottom: 10px;
+    width: 100%;
+    display: inline-block;
+    border-left: 5px solid #126da7;
+  }
+  .home-post:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+    .home-post .entry-content {
+      float: left;
+      width: 100%;
+      padding: 5px 15px;
+    }
+    .home-post .post-image {
+      display: none;
+      /*float: left;
+      width: 33%;*/
+    }
+    .post-image img {
+      /*width: auto;*/
+      display: none;
+    }
+    .home-post .entry-content h5 {
+      margin-top: 5px;
+      text-align: left;
+    }
+    .home-post .entry-content p {
+      font-size: 12px;
+      line-height: 2;
+      text-align: left;
+      min-height: 10px;
+      margin-bottom: 0;
+    }
+    .home-post .entry-content h5 a {
+      font-size: 16px;
+    }
+    .home-post .entry-content h5 a:hover {
+      color:#312f2b;
+      text-decoration:none;
+    }
+    .home-post .entry-content .morelink {
+      text-align: right;
+    }
+    .home-post .entry-content a.more {
+      font-size:13px;
+    }
 }
 @media only screen  and (min-device-width : 320px)  and (max-device-width : 480px) {
   #headerwrap {

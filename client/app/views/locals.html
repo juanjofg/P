@@ -19,7 +19,9 @@
               <div class="entry-content">
                 <h5><strong><a ng-href="#/event/{{eventName}}/{{local.id}}" ng-click="selectLocal(local)">{{local.name}}</a></strong></h5>
                 <p>{{local.snack}}</p>
-                <a ng-href="#/event/{{eventName}}/{{local.id}}" ng-click="selectLocal(local)" class="more">Ver más</a>
+                <div class="morelink">
+                  <a ng-href="#/event/{{eventName}}/{{local.id}}" ng-click="selectLocal(local)" class="more">Ver más</a>
+                </div>
               </div>
             </div>
           </div>
