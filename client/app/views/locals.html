@@ -10,7 +10,12 @@
       </div>
       <div class="container">
         <h2 class="centered">Locales</h2>
-        <div class="row centered locals" ng-repeat="row in locals">
+        <div class="row" ng-hide="locals">
+          <div class="col-lg-offset col-lg-8">
+            Todavía no hay información disponible de los locales participantes.
+          </div>
+        </div>
+        <div class="row centered locals" ng-show="locals" ng-repeat="row in locals">
           <div class="col-lg-3" ng-repeat="local in row" ng-model="selectedLocal.info">
             <div class="home-post">
               <div class="post-image">

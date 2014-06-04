@@ -17,23 +17,26 @@ angular.module('PintxApp')
           $scope.eventInfo = res[0].info;
           $scope.originalLocals = [];//res[0].locals;
           var locals = [];
-          for (var i = 0; i < res[0].locals.length; i++){
-            if (i % 4 === 0){
-              locals.push([]);
+          //TODO: check locals presence
+          if (res[0].locals){
+            for (var i = 0; i < res[0].locals.length; i++){
+              if (i % 4 === 0){
+                locals.push([]);
+              }
+              locals[locals.length-1].push(res[0].locals[i]);
+              //TODO: check for lat/long pair
+              $scope.originalLocals.push([
+                res[0].locals[i].name,
+                res[0].locals[i].loc.lat,
+                res[0].locals[i].loc.lon,
+                res[0].locals[i].address,
+                res[0].locals[i].snack,
+                i,
+                'restaurant'
+              ]);
             }
-            locals[locals.length-1].push(res[0].locals[i]);
-            //TODO: no meter los que no tienen lat/lon
-            $scope.originalLocals.push([
-              res[0].locals[i].name,
-              res[0].locals[i].loc.lat,
-              res[0].locals[i].loc.lon,
-              res[0].locals[i].address,
-              res[0].locals[i].snack,
-              i,
-              'restaurant'
-            ]);
+            $scope.locals = locals;
           }
-          $scope.locals = locals;
         }
       }
       function errorHandler (err) {
