@@ -17,7 +17,6 @@ angular.module('PintxApp')
           $scope.eventInfo = res[0].info;
           $scope.originalLocals = [];//res[0].locals;
           var locals = [];
-          //TODO: check locals presence
           if (res[0].locals){
             for (var i = 0; i < res[0].locals.length; i++){
               if (i % 4 === 0){
