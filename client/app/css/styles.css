@@ -277,7 +277,7 @@ a:after {
   text-align:center;
   background-attachment: relative;
   background-position: center center;
-  min-height: 650px;
+  /*min-height: 650px;*/
   width: 100%;
   
     -webkit-background-size: 100%;
@@ -293,7 +293,7 @@ a:after {
 
 #headerwrap h1 {
   color:#ffffff;
-  margin-top: 90px;
+
   padding-bottom: 30px;
   letter-spacing: 8px;
   font-size: 120px;
@@ -716,10 +716,13 @@ section#blog {
   #headerwrap {
     background: url(../images/header_bg_768.jpg) no-repeat center top;
     min-height: 250px;
+    margin-top: 0;
+    padding-top: 60px;
     width: 100%;
   }
   #headerwrap h1 {
     font-size: 80px;
+    padding-bottom: 0;
   }
   #headerwrap p {
     font-size: 30px;

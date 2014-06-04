@@ -18,7 +18,6 @@ angular.module('PintxApp')
           0,
           'restaurant'
         ]);
-        $scope.$apply();
       }
       function drawData (res) {
         if (res && res.locals){
