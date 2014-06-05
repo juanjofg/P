@@ -610,8 +610,9 @@ section#blog {
   padding:15px;
 }
 .home-post .entry-content p {
-  padding-bottom: 20px;
-  min-height: 80px;
+  /*padding-bottom: 20px;
+  min-height: 80px;*/
+  margin-bottom: 0;
   overflow: hidden;
 }
 .home-post .entry-content h5 a {
@@ -625,7 +626,7 @@ section#blog {
   font-size:13px;
 }
 .post-image img {
-  width: 100%;
+  /*width: 100%;*/
 }
 .blog-bg {
   background: #2b2b2b;
@@ -646,6 +647,9 @@ section#blog {
 }
 .locals {
   padding: 10px 0;
+}
+.local {
+  padding-bottom: 10px;
 }
 #map-canvas {
   width: 100%;
@@ -701,9 +705,29 @@ section#blog {
    MEDIA QUERIES
    ========================================================================== */
 
-
+.home-post .entry-content {
+  height: 165px;
+  position: relative;
+}
+.morelink {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
 @media screen and (max-width:1050px), screen and (max-device-width:1050px){
   body .header{background-attachment: scroll;}
+  .home-post {
+    border-top: 5px solid #126da7;
+  }
+  .home-post .entry-content {
+    height: 165px;
+    position: relative;
+  }
+  .morelink {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 
@@ -737,6 +761,7 @@ section#blog {
     width: 100%;
     display: inline-block;
     border-left: 5px solid #126da7;
+    border-top: 0;
   }
   .home-post:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
@@ -752,6 +777,7 @@ section#blog {
       float: left;
       width: 100%;
       padding: 5px 15px;
+      height: auto;
     }
     .home-post .post-image {
       display: none;
@@ -772,6 +798,7 @@ section#blog {
       text-align: left;
       min-height: 10px;
       margin-bottom: 0;
+      margin-right: 25px;
     }
     .home-post .entry-content h5 a {
       font-size: 16px;
@@ -782,9 +809,11 @@ section#blog {
     }
     .home-post .entry-content .morelink {
       text-align: right;
+      bottom: 5px;
+      right: 10px;
     }
     .home-post .entry-content a.more {
-      font-size:13px;
+      font-size: 180%;
     }
 }
 @media only screen  and (min-device-width : 320px)  and (max-device-width : 480px) {
