@@ -9,4 +9,12 @@ En esta ocasión el juguete tiene las siguientes características:
 * AngularJS
 
 ##Si quieres jugar
-1 `git clone`
+````
+  git clone
+````
+````
+  npm install
+````
+````
+  bower install
+````
