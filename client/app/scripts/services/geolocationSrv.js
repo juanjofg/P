@@ -1,5 +1,5 @@
 /***************************************************************
-* Servicio basico para replicar la API de geolocalizacion HTML5
+* Servicios para replicar la API de geolocalizacion HTML5
 ***************************************************************/
 'use strict';
 
@@ -9,6 +9,7 @@ angular.module('PintxApp')
     if (window.navigator && window.navigator.geolocation){
       geolocation = window.navigator.geolocation;
     }
+
     return {
       getPosition: function(success, error){
         if (geolocation){

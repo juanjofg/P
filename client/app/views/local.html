@@ -9,7 +9,7 @@
       <div class="panel-body">
         <div class="row m-t-xl">
           <div class="col-xs-3 text-right padder-v">
-            <a href="http://maps.google.es/maps?q=@{{selectedLocal.lat}},{{selectedLocal.long}}" class="btn btn-primary btn-icon btn-rounded m-t-xl"><i class="fa fa-map-marker"></i></a>
+            <a href="http://maps.google.es/maps?q=@{{selectedLocal.loc.lat}},{{selectedLocal.loc.lon}}" class="btn btn-primary btn-icon btn-rounded m-t-xl"><i class="fa fa-map-marker"></i></a>
           </div>
           <div class="col-xs-6 text-center">
             <div class="inline">
@@ -19,7 +19,7 @@
                 </div>
               </div>
               <div class="h4 m-t m-b-xs font-bold text-lt">{{selectedLocal.snack}}</div>
-              <small class="text-muted m-b">{{selectedLocal.snack}}</small>
+              <small class="text-muted m-b"></small>
             </div>
           </div>
           <div class="col-xs-3 padder-v">
@@ -38,11 +38,19 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6 text-right"> <small>Cocinero</small>
-              <div class="text-lt font-bold">Jose lito</div>
+            <div class="col-xs-6 text-right"> <small>Chef</small>
+              <div class="text-lt font-bold">- -</div>
             </div>
             <div class="col-xs-6"> <small>Gerente</small>
-              <div class="text-lt font-bold">James Richo</div>
+              <div class="text-lt font-bold">- -</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 text-right"> <small>Info</small>
+              <div class="text-lt font-bold">{{selectedLocal.additional}}</div>
+            </div>
+            <div class="col-xs-6"> <small>Horario</small>
+              <div class="text-lt font-bold">{{selectedLocal.schedule}}</div>
             </div>
           </div>
         </div>
@@ -60,4 +68,6 @@
           </div>
         </div>
       </footer>
+    </section>
+    <section g-maps>
     </section>
