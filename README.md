@@ -5,9 +5,9 @@ Descubre desde tu navegador dónde se celebran los eventos gastronómicos del mo
 
 En esta ocasión el juguete tiene las siguientes características:
 
-  1 Express 4
-  2 MongoDB
-  3 AngularJS
+  1. Express 4
+  2. MongoDB
+  3. AngularJS
 
 ##Si quieres jugar
 Bájate el código
