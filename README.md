@@ -9,12 +9,18 @@ En esta ocasión el juguete tiene las siguientes características:
 * AngularJS
 
 ##Si quieres jugar
+Bájate el código
 ````
   git clone
 ````
+Instala dependencias
 ````
   npm install
 ````
 ````
   bower install
+````
+Y échalo a andar
+````
+  nodemon app.js
 ````
