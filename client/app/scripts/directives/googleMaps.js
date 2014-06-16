@@ -25,6 +25,7 @@ angular.module('PintxApp')
           map = new $window.google.maps.Map(document.getElementById('map-canvas'), mapOptions);
           if (scope.originalLocals && scope.originalLocals.length > 0) {
             setMarkers(map, scope.originalLocals);
+            scope.$apply();
           }
         }
 
@@ -76,7 +77,6 @@ angular.module('PintxApp')
 
               /* keep the handle, in order to close it on next click event */
               infos[0]=infoWindow;
-              scope.$apply();
             };
           })(marker,content,infoWindow));
         }
