@@ -23,5 +23,7 @@ Instala dependencias
 ````
 Y échalo a andar
 ````
+  cd server
+  
   nodemon app.js
 ````
