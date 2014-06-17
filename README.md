@@ -27,3 +27,28 @@ Y échalo a andar
   
   nodemon app.js
 ````
+Por cierto, la estructura de datos podría ser parecida a esta:
+````
+  name: "Nombre del evento",
+  region: "Region/Comunidad/...",
+  location: "Ciudad",
+  date: ISODate("2014-05-30T10:50:42.389Z"),
+  info: "Descripción",
+  price: "X.00€",
+  locals:[
+        {
+          id: 47,
+          name: "Taberna Salcedo",
+          snack: "Ensalada primavera",
+          address: "C/Bermudez de Castro, 38",
+          loc: {
+            lon: -5.837140999999974,
+            lat: 43.370952
+          },
+          schedule: "Horario: de 13:00 a 16:00 y de 20:15 a 24:00 h.",
+          additional: "Cierra: lunes",
+          phone: "",
+          visits: 0
+        }
+      ]
+````
