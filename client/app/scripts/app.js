@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('PintxApp', ['ngCookies','ngResource','ngSanitize','ngRoute'])
+  .module('PintxApp', ['ngCookies','ngResource','ngSanitize','ngRoute', 'ngAminate'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
