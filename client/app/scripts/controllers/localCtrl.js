@@ -1,24 +1,43 @@
 'use strict';
 
 angular.module('PintxApp')
-  .controller('LocalCtrl', ['$scope', '$routeParams', 'StoreLocal', 'Events',
-    function($scope, $routeParams, StoreLocal, Events){
+  .controller('LocalCtrl', ['$scope', '$routeParams', 'StoreLocal', 'Events', '$cookieStore', '$cookies',
+    function($scope, $routeParams, StoreLocal, Events, $cookieStore, $cookies){
       
       var eventName = $routeParams.name.replace(/_/g, ' '),
           localId = $routeParams.local;
+
       $scope.originalLocals = [];
       function drawMapPoint (info) {
         //TODO: no meter los que no tienen lat/lon
-        $scope.originalLocals.push([
-          info.name,
-          info.loc.lat,
-          info.loc.lon,
-          info.address,
-          info.snack,
-          0,
-          'restaurant'
-        ]);
+        if (info.loc && info.loc.lat){
+          $scope.originalLocals.push([
+            info.name,
+            info.loc.lat,
+            info.loc.lon,
+            info.address,
+            info.snack,
+            0,
+            'restaurant'
+          ]);
+        }
       }
+
+      function countVisit () {
+        var local = $cookieStore.get('local');
+
+        if (local === localId){
+          return;
+        } else {
+          $cookieStore.put('local', localId);
+          Events.putVisit(eventName, localId, updateCounter, errorHandler);
+        }
+      }
+      
+      function updateCounter (res) {
+        console.log(res);
+      }
+
       function drawData (res) {
         if (res && res.locals){
           $scope.selectedLocal = res.locals[0];
@@ -26,7 +45,9 @@ angular.module('PintxApp')
         } else {
           $scope.selectedLocal = res;
         }
+        countVisit();
       }
+
       function errorHandler (err) {
         //Define error handler :P err
       }
@@ -35,6 +56,7 @@ angular.module('PintxApp')
       if (StoreLocal.info && StoreLocal.info.id){
         $scope.selectedLocal = StoreLocal.info;
         drawMapPoint(StoreLocal.info);
+        countVisit();
       } else {
         Events.getLocalData(eventName, localId, drawData, errorHandler);
       }

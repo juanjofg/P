@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('PintxApp')
-  .directive('gMaps', ['googleApi', '$window', '$rootScope',
-    function(googleApi, $window, $rootScope){
+  .directive('gMaps', ['googleApi', '$window', '$rootScope', '$timeout',
+    function(googleApi, $window, $rootScope, $timeout){
     return {
       restrict: 'A',
       replace: true,
@@ -24,8 +24,9 @@ angular.module('PintxApp')
 
           map = new $window.google.maps.Map(document.getElementById('map-canvas'), mapOptions);
           if (scope.originalLocals && scope.originalLocals.length > 0) {
-            setMarkers(map, scope.originalLocals);
-            scope.$apply();
+            $timeout(function(){
+              setMarkers(map, scope.originalLocals);  
+            }, 100);
           }
         }
 

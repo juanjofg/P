@@ -27,6 +27,12 @@ angular.module('PintxApp')
             .get('/p/api/event/' + name + '/' + id)
             .success(success)
             .error(error);
+        },
+        putVisit: function(name, id, success, error){
+          $http
+            .post('/p/api/visit/' + name + '/' + id)
+            .success(success)
+            .error(error);
         }
       };
     }
