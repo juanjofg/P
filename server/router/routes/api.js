@@ -56,4 +56,17 @@ router.get('/event/:name/:local', function(req, res){
     res.json(events[0]);
   });
 });
+// /p/api/visit/:name/:local
+// POST para sumar visitas a cada local
+router.post('/visit/:name/:local', function(req, res){
+  var localId = parseInt(req.params.local, 10),
+      options = {upsert: true, safe: true};
+  Event.update({name : req.params.name , "locals.id" : localId }, {$inc : {"locals.$.visits" : 1} }, options, function (err, num, raw){
+    if (err) {
+      res.json(err);
+    } else {
+      res.send(200);
+    }
+  });
+});
 module.exports = router;
