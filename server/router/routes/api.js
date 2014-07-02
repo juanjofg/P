@@ -15,7 +15,8 @@ router.get('/cities', function(req, res){
   var cities = [
     {id:1, name: 'Oviedo'},
     {id:2, name: 'Gijón'},
-    {id:3, name: 'Aller'}
+    {id:3, name: 'Aller'},
+    {id:4, name: 'Valencia de Don Juan'}
   ];
   res.json({cities: cities});
 });
