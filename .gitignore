@@ -35,8 +35,8 @@ bower_components
 test
 
 #sublime projectfiles
-p.sublime-project
-p.sublime-workspace
+*.sublime-project
+*.sublime-workspace
 
 #MongoDB
 data/
@@ -44,3 +44,5 @@ data/
 client/.sass-cache
 client/.tmp
 client/.jshintrc
+
+.DS_Store
