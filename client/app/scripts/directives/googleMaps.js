@@ -12,8 +12,6 @@ angular.module('PintxApp')
         lat = scope.currentPosition ? scope.currentPosition.latitude :  43.3694868,
         long = scope.currentPosition? scope.currentPosition.longitude : -5.8486578;
 
-        currentLocals = scope.originalLocals;
-
         function initGoogleMaps() {
         // Load your Google map stuff here
         // Remember to wrap scope variables inside `scope.$apply(function(){...});`
@@ -31,11 +29,12 @@ angular.module('PintxApp')
         }
 
         // If Google maps is already present then just initialise my map
-        if (googleApi.mapsLoaded()) {
-          scope.$watch('originalLocals', function(){
+        scope.$watch('originalLocals', function(){
+          if (googleApi.mapsLoaded()) {
             initGoogleMaps();
-          });
-        } else {
+          }
+        });
+        if (!googleApi.mapsLoaded()) {
           googleApi.loadGoogleMapsAsync();
         }
         $rootScope.$on('googlemapsLoaded', initGoogleMaps);
