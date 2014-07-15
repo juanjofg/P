@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('PintxApp')
-  .controller('EventCtrl', ['$scope','$routeParams', 'Events', 'StoreLocal',
-    function($scope, $routeParams, Events, StoreLocal){
-
+  .controller('EventCtrl', ['$scope','$routeParams', '$filter', 'Events', 'StoreLocal', 'geolocationSrv', 'utilities',
+    function($scope, $routeParams, $filter, Events, StoreLocal, geolocationSrv, utilities){
+      // Variable para almacenar los locales y filtrar las tabs
+      var eventLocals;
       $scope.selectLocal = function (local) {
         StoreLocal.info = local;
       };
@@ -11,39 +12,50 @@ angular.module('PintxApp')
       var eventName = $routeParams.name.replace(/_/g, ' ');
       $scope.eventName = eventName;
 
+      function updateGrid (grid) {
+        $scope.originalLocals = grid.geoLocationInfo;
+        $scope.locals = grid.locals;
+      }
+
       function drawEvents (res){
         if (res.length){
+          eventLocals = res;
           $scope.eventName = res[0].name;
           $scope.eventInfo = res[0].info;
-          $scope.originalLocals = [];//res[0].locals;
-          var locals = [];
           if (res[0].locals){
-            for (var i = 0; i < res[0].locals.length; i++){
-              if (i % 4 === 0){
-                locals.push([]);
-              }
-              
-              locals[locals.length-1].push(res[0].locals[i]);
-
-              if (res[0].locals[i].loc && res[0].locals[i].loc.lat){
-                $scope.originalLocals.push([
-                  res[0].locals[i].name,
-                  res[0].locals[i].loc.lat,
-                  res[0].locals[i].loc.lon,
-                  res[0].locals[i].address,
-                  res[0].locals[i].snack,
-                  i,
-                  'restaurant'
-                ]);
-              }
-            }
-            $scope.locals = locals;
+            utilities.generateGrid(res[0].locals, updateGrid);
           }
         }
       }
       function errorHandler (err) {
         console.log(err);
       }
+      $scope.showAll = function () {
+        utilities.generateGrid(eventLocals[0].locals, updateGrid);
+      };
+      $scope.showTop = function () {
+        //TODO
+      };
+      /*
+      * With $scope.currentPosition and saved eventLocals, we can get nearest locals
+      * Then, we can filter (order and limit) the actual view
+      */
+      $scope.showNear = function () {
+        var i = 0, nearestLocals, sorted, nearest, newGrid;
+        nearestLocals = angular.copy(eventLocals[0].locals);
+        for (i; i < nearestLocals.length; i++){
+          nearestLocals[i].distance = geolocationSrv.getDistance(
+                                        $scope.currentPosition.latitude,
+                                        $scope.currentPosition.longitude,
+                                        nearestLocals[i].loc.lat,
+                                        nearestLocals[i].loc.lon);
+        }
+        sorted = $filter('orderBy')(nearestLocals, 'distance');
+        nearest = $filter('limitTo')(sorted, 10);
+        nearestLocals.length = 0;
+        nearestLocals = nearest;
+        newGrid = utilities.generateGrid(nearest, updateGrid);
+      };
 
       Events.getEventLocals(eventName, drawEvents, errorHandler);
     }

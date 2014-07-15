@@ -10,7 +10,12 @@
       </div>
       <div class="container">
         <h2 class="centered">Locales</h2>
-        <hr>
+        <hr/>
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+          <li class="centered"><a ng-click="showNear()">Más cercanos</a></li>
+          <li class="centered"><a ng-click="showTop()">Top 10</a></li>
+          <li class="centered active"><a ng-click="showAll()">Todos</a></li>
+        </ul>
         <div class="row" ng-hide="locals">
           <div class="col-lg-offset col-lg-8">
             Todavía no hay información disponible de los locales participantes.
