@@ -32,6 +32,7 @@ angular.module('PintxApp')
       }
       $scope.showAll = function () {
         utilities.generateGrid(eventLocals[0].locals, updateGrid);
+        $scope.$emit('googlemapsLoaded');
       };
       $scope.showTop = function () {
         //TODO
@@ -55,6 +56,7 @@ angular.module('PintxApp')
         nearestLocals.length = 0;
         nearestLocals = nearest;
         newGrid = utilities.generateGrid(nearest, updateGrid);
+        $scope.$emit('googlemapsLoaded');
       };
 
       Events.getEventLocals(eventName, drawEvents, errorHandler);

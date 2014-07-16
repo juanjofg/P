@@ -8,9 +8,9 @@ angular.module('PintxApp')
       replace: true,
       templateUrl: 'views/map.html',
       link: function (scope, element, attrs) {
-        var lat, long, currentLocals;
-        lat = scope.currentPosition ? scope.currentPosition.latitude :  43.3694868,
-        long = scope.currentPosition? scope.currentPosition.longitude : -5.8486578;
+        var lat, long;
+        lat = (scope.currentPosition && scope.currentPosition.latitude) ? scope.currentPosition.latitude :  43.3694868,
+        long = (scope.currentPosition && scope.currentPosition.longitude) ? scope.currentPosition.longitude : -5.8486578;
 
         function initGoogleMaps() {
         // Load your Google map stuff here
@@ -23,18 +23,17 @@ angular.module('PintxApp')
           map = new $window.google.maps.Map(document.getElementById('map-canvas'), mapOptions);
           if (scope.originalLocals && scope.originalLocals.length > 0) {
             $timeout(function(){
-              setMarkers(map, scope.originalLocals);  
+              setMarkers(map, scope.originalLocals);
             }, 100);
           }
         }
 
         // If Google maps is already present then just initialise my map
-        scope.$watch('originalLocals', function(){
-          if (googleApi.mapsLoaded()) {
+        if (googleApi.mapsLoaded()) {
+          scope.$watch('originalLocals', function(){
             initGoogleMaps();
-          }
-        });
-        if (!googleApi.mapsLoaded()) {
+          });
+        } else {
           googleApi.loadGoogleMapsAsync();
         }
         $rootScope.$on('googlemapsLoaded', initGoogleMaps);
