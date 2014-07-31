@@ -71,4 +71,17 @@ router.post('/visit/:name/:local', function(req, res){
     }
   });
 });
+// /p/api/vote/:name/:local
+// POST para sumar votos a cada local
+router.post('/vote/:name/:local', function(req, res){
+  var localId = parseInt(req.params.local, 10),
+      options = {upsert: true, safe: true};
+  Event.update({name : req.params.name , "locals.id" : localId }, {$inc : {"locals.$.votes" : 1} }, options, function (err, num, raw){
+    if (err) {
+      res.json(err);
+    } else {
+      res.send(200);
+    }
+  });
+});
 module.exports = router;
