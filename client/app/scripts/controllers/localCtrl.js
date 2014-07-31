@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('PintxApp')
-  .controller('LocalCtrl', ['$scope', '$routeParams', 'StoreLocal', 'Events', '$cookieStore', '$cookies',
-    function($scope, $routeParams, StoreLocal, Events, $cookieStore, $cookies){
+  .controller('LocalCtrl', ['$scope', '$routeParams', 'StoreLocal', 'Events', '$cookieStore',
+    function($scope, $routeParams, StoreLocal, Events, $cookieStore){
       
       var eventName = $routeParams.name.replace(/_/g, ' '),
-          localId = $routeParams.local;
+          localId = $routeParams.local,
+          local = $cookieStore.get('local');
 
       $scope.originalLocals = [];
       function drawMapPoint (info) {
@@ -23,19 +24,30 @@ angular.module('PintxApp')
         }
       }
 
-      function countVisit () {
-        var local = $cookieStore.get('local');
-
+      function updateCounter (type) {
+        
         if (local === localId){
           return;
         } else {
           $cookieStore.put('local', localId);
-          Events.putVisit(eventName, localId, updateCounter, errorHandler);
+          if (type === 'visit'){
+            Events.putVisit(eventName, localId, updateVisits, errorHandler);  
+          } else {
+            Events.putVote(eventName, localId, updateVotes, errorHandler);
+          }
         }
       }
-      
-      function updateCounter (res) {
-        console.log(res);
+  
+      function updateVisits (res) {
+        if (res){
+          $scope.selectedLocal.visits =+ 1;  
+        }
+      }
+
+      function updateVotes (res) {
+        if (res){
+          $scope.selectedLocal.votes =+ 1;  
+        }
       }
 
       function drawData (res) {
@@ -45,18 +57,24 @@ angular.module('PintxApp')
         } else {
           $scope.selectedLocal = res;
         }
-        countVisit();
+        updateCounter('visit');
       }
 
       function errorHandler (err) {
         //Define error handler :P err
       }
 
+      $scope.updateLocal = function () {
+        updateCounter('vote');
+      };
+      $scope.canVote = function () {
+        return local !== 'undefined' ? false : true;
+      };
       // Datos del local recuperados de la lista de locales
       if (StoreLocal.info && StoreLocal.info.id){
         $scope.selectedLocal = StoreLocal.info;
         drawMapPoint(StoreLocal.info);
-        countVisit();
+        updateCounter('visit');
       } else {
         Events.getLocalData(eventName, localId, drawData, errorHandler);
       }
