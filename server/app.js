@@ -23,8 +23,8 @@ var MONGO = {
 // to get data from POST request
 app.use(bodyParser());
 
-//mongoose.connect('mongodb://localhost/events', MONGO.options);
-mongoose.connect('mongodb://juanjofg:p7tinto@oceanic.mongohq.com:10038/events', MONGO.options);
+mongoose.connect('mongodb://localhost/events', MONGO.options);
+
 
 var port = process.env.PORT || 3000;
 
