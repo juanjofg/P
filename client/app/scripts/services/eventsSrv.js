@@ -33,6 +33,12 @@ angular.module('PintxApp')
             .post('/p/api/visit/' + name + '/' + id)
             .success(success)
             .error(error);
+        },
+        putVote: function(name, id, success, error){
+          $http
+            .post('/p/api/vote/' + name + '/' + id)
+            .success(success)
+            .error(error);
         }
       };
     }
