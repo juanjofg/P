@@ -13,6 +13,7 @@ router.get('/', function(req, res){
 router.get('/cities', function(req, res){
   //La lista de ciudades no se recupera de BD (de momento)  
   var cities = [
+    {id:6, name: 'Madrid'},
     {id:1, name: 'Oviedo'},
     {id:2, name: 'Gijón'},
     {id:3, name: 'Aller'},
