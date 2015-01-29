@@ -1,10 +1,11 @@
-@import 'variables.scss';
-@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import '_variables';
 
 // bower:scss
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
-
+@import "custom";
+@import "icomoon";
+@import "animate-custom";
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
